@@ -20,7 +20,7 @@ This script helps you download Windows Spotlight images from your Windows 10 or 
     - Use the `cd` command to navigate to the directory where you downloaded or cloned the repository. For example:
     
     ```sh
-    cd path\to\spotlight-downloader
+    cd "C:\Users\JohnDoe\Documents\GitHub\download_windows_spotlights"
     ```
 
 4. **Run the Script**:
@@ -34,42 +34,3 @@ This script helps you download Windows Spotlight images from your Windows 10 or 
 
 5. **Access Your Images**:
     - The script will copy the Windows Spotlight images to a folder named `Windows Spotlight Images` in your `Downloads` directory.
-
-## Script Details
-
-The script performs the following steps:
-1. Prompts you to enter your Windows username.
-2. Copies files from the Spotlight assets folder to a designated folder in your Pictures directory.
-
-Here is the script for reference:
-
-```python
-import os
-import shutil
-import time
-
-def get_username():
-    username = input("Enter your username: ")
-    return username
-
-def copy_files(source_folder, destination_folder):
-    if not os.path.exists(source_folder):
-        print("Source folder does not exist.")
-        return
-
-    if not os.path.exists(destination_folder):
-        os.makedirs(destination_folder)
-
-    for filename in os.listdir(source_folder):
-        source_file = os.path.join(source_folder, filename)
-        if os.path.isfile(source_file):
-            shutil.copy(source_file, destination_folder)
-
-    print("Files copied successfully.")
-
-if __name__ == "__main__":
-    username = get_username()
-    source_folder = f"C:\\Users\\{username}\\AppData\\Local\\Packages\\Microsoft.Windows.ContentDeliveryManager_cw5n1h2txyewy\\LocalState\\Assets"
-    destination_folder = f"C:\\Users\\{username}\\Pictures\\Spotlight Images"
-
-    copy_files(source_folder, destination_folder)
